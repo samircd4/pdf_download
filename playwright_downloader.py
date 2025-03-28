@@ -43,11 +43,10 @@ def download_pdfs(urls):
             print(f"{_}: Finished processing {url}")
 
 # List of URLs you want to download from
-urls = [
-    "https://usace.contentdm.oclc.org/utils/getfile/collection/p16021coll15/id/8584",
-    "https://usace.contentdm.oclc.org/utils/getfile/collection/p16021coll15/id/8585",
-    # Add more URLs here
-]
+with open('link.txt', 'r') as file:
+    urls = [line.strip() for line in file.readlines()]
+    returned_urls = list(set(urls))  # Remove duplicates
+
 
 # Call the function to start downloading the PDFs
-download_pdfs(urls)
+download_pdfs(returned_urls)
